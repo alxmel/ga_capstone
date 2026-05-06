@@ -9,7 +9,7 @@ headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36'
 }
 
-# HTTP request to Wiki page
+# HTTP GET request to Wiki page
 r = requests.get("https://en.wikipedia.org/wiki/List_of_immigration_raids_and_arrests_in_the_second_Trump_presidency", headers=headers)
 
 # Save the contents using BeautifulSoup
@@ -31,7 +31,7 @@ for month in months:
 for p in paragraphs:
     paragraphs_array.append(p.text)
 
-# Creating the columns for the DataFrame, then will begin appending each web-scraped paragraph
+# Creating the columns for the DataFrame, then will begin appending each web-scraped year and paragraph
 df = pd.DataFrame(columns=["month", "event"])
 
 # Looping through each paragraph, checking which month is mentioned, and appending to the DataFrame the Month and Paragraph
