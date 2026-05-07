@@ -12,9 +12,9 @@ BASE_URL = "http://127.0.0.1:8000"
 def response_generator():
     response = random.choice(
         [
-            "Hello there! How can I assist you today?",
-            "Hi, human! Is there anything I can help you with?",
-            "Do you need help?",
+            "Why do you bother me human?",
+            "What is it?",
+            "..."
         ]
     )
     for word in response.split():
@@ -25,7 +25,7 @@ def get_health(base_url: str):
     """ Performs Health Check on the backend API server """
     response = requests.get(f"{base_url}/health")
 
-    for letter in "The status of the backend API server is: ".split():
+    for letter in "DOOMBOTS status (backend API server) is: ".split():
         yield letter + ' '
         time.sleep(0.05)
     for letter in response.json()["status"]:
@@ -40,20 +40,24 @@ def get_prediction(base_url: str, sample_request: dict):
         json=sample_request
     ).json()
 
-    for word in "The predicted next state is: ".split():
+    for word in "The next DOOMBOTS deployment is: ".split():
         yield word + ' '
         time.sleep(0.05)
     for letter in response["prediction_label"]:
-        yield f":red[{letter}]"
+        yield f":green[{letter}]"
         time.sleep(0.05)
 
     yield "\n\n"
 
-    for word in "With a probability of: ".split():
+    # for word in "With a probability of: ".split():
+    #     yield word + ' '
+    #     time.sleep(0.05)
+    # for letter in str(response["probabilities"].get(response["prediction_label"])):
+    #     yield f":blue[{letter}]"
+    #     time.sleep(0.05)
+
+    for word in f"With a :green[{response['probabilities'].get(response['prediction_label']):.1%}] probability that I feel like it...".split():
         yield word + ' '
-        time.sleep(0.05)
-    for letter in str(response["probabilities"].get(response["prediction_label"])):
-        yield f":blue[{letter}]"
         time.sleep(0.05)
 
 
@@ -79,7 +83,7 @@ if prompt := st.chat_input("Enter chat"):
         st.markdown(prompt)
     
     # Display assistant response in chat message container
-    with st.chat_message("assistant"):
+    with st.chat_message("assistant", avatar="avatar/doom3.png"):
         if prompt == "healthcheck":
             response = st.write_stream(get_health(BASE_URL))
         elif prompt == "predict":
