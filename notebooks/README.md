@@ -1,9 +1,12 @@
 # Machine Learning Notebooks
 
 ### Gen A.I. Usage:
-I knew what data I wanted to use, and what Target Variable I wanted to predict, but I was unsure of *how* to go about it, specifically which algorithm to utilize. I used Gen AI to help me find and choose the correct algorithm.
+I knew what data I wanted to use, and what Target Variable I wanted to predict, but I was unsure of *how* to go about it, specifically which algorithm to utilize. I used Gen AI to help me find and choose the correct algorithm. I attempted to have the LLM guide me more than outright tell me, which is why I've structured my prompts in a very similar manner. I also asked for it to generate a RegEx for me.
 
-#### Prompt used:
+### Prompt details:
+**Gen AI app:** Google Gemini
+
+**Prompt**:
 ```
 **Role:**
 
