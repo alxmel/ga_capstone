@@ -1,9 +1,9 @@
 # Data
 **Source:** https://en.wikipedia.org/wiki/List_of_immigration_raids_and_arrests_in_the_second_Trump_presidency
 
-Data located under the `raw` folder is the data that was web scraped from the source Wikipedia page.
+Data located under the [raw](raw/) folder is the data that was web scraped from the source Wikipedia page.
 
-The data under the `processed` folder was updated using with the following:
+The data under the [processed](processed/) folder was updated using with the following:
 
 ## Schema Explaination of the Processed Data
 

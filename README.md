@@ -17,5 +17,6 @@ Any other prompts will result in a random selection of 3 hardcoded responses.
 - Utilize an algorithm like K-Nearest Neighbors to add more observations and see the impact on the Accuracy score with more observations.
 - Try a different Algorithm, like XGBoost.
 - Create an Agent for the Streamlit UI.
+- Improve the overall UI
 - <sub>and solve world peace...</sub>
 
