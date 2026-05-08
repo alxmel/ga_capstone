@@ -12,9 +12,11 @@ BASE_URL = "http://127.0.0.1:8000"
 def response_generator():
     response = random.choice(
         [
-            "Why do you bother me human?",
-            "What is it?",
-            "..."
+            "You dare address Doom as though we are equals? Speak your query quickly, and perhaps I shall grace you with the wisdom your feeble mind so desperately craves.",
+            "Your question is... passable. Not entirely beneath Doom's attention. Ask it again, but with more reverence.",
+            "Silence. Doom is thinking. Your impatience is noted and will be addressed after your question is answered — likely with a dungeon.",
+            "...",
+            "Your question is... passable. Not entirely beneath Doom's attention. Ask it again, but with more reverence."
         ]
     )
     for word in response.split():
@@ -56,7 +58,7 @@ def get_prediction(base_url: str, sample_request: dict):
     #     yield f":blue[{letter}]"
     #     time.sleep(0.05)
 
-    for word in f"With a :green[{response['probabilities'].get(response['prediction_label']):.1%}] probability that I feel like it...".split():
+    for word in f":green[{response['probabilities'].get(response['prediction_label']):.1%}] probability. Of course the answer is already decided. Doom does not deliberate — Doom declares. Your city should consider itself... honored.".split():
         yield word + ' '
         time.sleep(0.05)
 
