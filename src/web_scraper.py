@@ -5,8 +5,9 @@ from bs4 import BeautifulSoup
 
 
 # Headers for user-agent
+# Wikimedia asks scripts to identify themselves and include a way to contact the owner: https://meta.wikimedia.org/wiki/User-Agent_policy
 headers = {
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36'
+    'User-Agent': f'ga-capstone-scraper/1.0 (https://github.com/alxmel/ga_capstone) {requests.utils.default_user_agent()}'
 }
 
 # HTTP GET request to Wiki page

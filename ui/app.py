@@ -12,11 +12,11 @@ BASE_URL = "http://127.0.0.1:8000"
 def response_generator():
     response = random.choice(
         [
-            "You dare address Doom as though we are equals? Speak your query quickly, and perhaps I shall grace you with the wisdom your feeble mind so desperately craves.",
-            "Your question is... passable. Not entirely beneath Doom's attention. Ask it again, but with more reverence.",
-            "Silence. Doom is thinking. Your impatience is noted and will be addressed after your question is answered — likely with a dungeon.",
+            "You dare address the Iron Oracle as though we are equals? Speak your query quickly, and perhaps I shall grace you with the wisdom your feeble mind so desperately craves.",
+            "Your question is... passable. Not entirely beneath the Oracle's attention. Ask it again, but with more reverence.",
+            "Silence. The Oracle is thinking. Your impatience is noted and will be addressed after your question is answered — likely with a dungeon.",
             "...",
-            "Your question is... passable. Not entirely beneath Doom's attention. Ask it again, but with more reverence."
+            "Your question is... passable. Not entirely beneath the Oracle's attention. Ask it again, but with more reverence."
         ]
     )
     for word in response.split():
@@ -27,7 +27,7 @@ def get_health(base_url: str):
     """ Performs Health Check on the backend API server """
     response = requests.get(f"{base_url}/health")
 
-    for letter in "DOOMBOTS status (backend API server) is: ".split():
+    for letter in "Oracle status (backend API server) is: ".split():
         yield letter + ' '
         time.sleep(0.05)
     for letter in response.json()["status"]:
@@ -42,7 +42,7 @@ def get_prediction(base_url: str, sample_request: dict):
         json=sample_request
     ).json()
 
-    for word in "The next DOOMBOTS deployment is: ".split():
+    for word in "The Oracle's vision points to: ".split():
         yield word + ' '
         time.sleep(0.05)
     for letter in response["prediction_label"]:
@@ -58,7 +58,7 @@ def get_prediction(base_url: str, sample_request: dict):
     #     yield f":blue[{letter}]"
     #     time.sleep(0.05)
 
-    for word in f":green[{response['probabilities'].get(response['prediction_label']):.1%}] probability. Of course the answer is already decided. Doom does not deliberate — Doom declares. Your city should consider itself... honored.".split():
+    for word in f":green[{response['probabilities'].get(response['prediction_label']):.1%}] probability. Even the Oracle cannot see everything — this is a classroom demonstration, not a prophecy.".split():
         yield word + ' '
         time.sleep(0.05)
 
@@ -85,7 +85,7 @@ if prompt := st.chat_input("Enter chat"):
         st.markdown(prompt)
     
     # Display assistant response in chat message container
-    with st.chat_message("assistant", avatar="avatar/doom3.png"):
+    with st.chat_message("assistant", avatar="avatar/iron_mask.png"):
         if prompt == "healthcheck":
             response = st.write_stream(get_health(BASE_URL))
         elif prompt == "predict":
